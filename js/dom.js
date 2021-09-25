@@ -54,10 +54,15 @@ function createButton(buttonTypeClass,eventListener)
 	return button;
 }
 
-function addTaskTocomplete(taksElement)
+function addTaskToCompleted(taskElement) 
 {
-
-  taksElement.remove();
+    const taskTitle = taskElement.querySelector(".inner > h2").innerText;
+    const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
+ 
+    const newTodo = makeTodo(taskTitle, taskTimestamp);
+    const listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
+    listCompleted.append(newTodo);
+    taskElement.remove();
 }
 
 function createCheckButton()
@@ -65,18 +70,7 @@ function createCheckButton()
 
 	return createButton("check-button", function(){
 
-		addTaskTocomplete(event.target.parentElement);
+		addTaskToCompleted(event.target.parentElement);
 	});
 }
 
-function addTaskToComplite(taskElement)
-{
-  const taskTitle = taskElement.querySelector(".inner > h2").innerText;
-  const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
-
-  const newTodo = makeTodo(taskTitle,taskTimestamp);
-  const listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
-  listCompleted.append(newTodo);
-  taskElement.remove();
-
-}
