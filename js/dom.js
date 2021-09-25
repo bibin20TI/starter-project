@@ -18,13 +18,13 @@ function addTodo ()
 
 }
 
-function makeTodo()
+function makeTodo(data,timestamp)
 {
    const textTitle = document.createElement("h2");
-   textTitle.innerText = "Android pemula";
+   textTitle.innerText = data;
 
    const textTimestamp = document.createElement("p");
-   textTimestamp.innerText = "2021-05-22";
+   textTimestamp.innerText = timestamp;
 
    const textContainer = document.createElement("div");
    textContainer.classList.add("inner");
@@ -33,49 +33,50 @@ function makeTodo()
    const container = document.createElement("div");
    container.classList.add("item","shadow");
    container.append(textContainer);
+   container.append(createCheckButton());
 
    return container;
 
 
 }
 
-// function createButton(buttonTypeClass,eventListener)
-// {
+function createButton(buttonTypeClass,eventListener)
+{
 
-// 	const button = document.createElement("button");
-// 	button.classList.add(buttonTypeClass);
+	const button = document.createElement("button");
+	button.classList.add(buttonTypeClass);
 
-// 	button.addEventListener("click", function(event){
+	button.addEventListener("click", function(event){
         
-//      eventListener(event);
-// 	});
+     eventListener(event);
+	});
 
-// 	return button;
-// }
+	return button;
+}
 
-// function addTaskTocomplete(taksElement)
-// {
+function addTaskTocomplete(taksElement)
+{
 
-//   taksElement.remove();
-// }
+  taksElement.remove();
+}
 
-// function createCheckButton()
-// {
+function createCheckButton()
+{
 
-// 	return createButton("check-button", function(){
+	return createButton("check-button", function(){
 
-// 		addTaskTocomplete(event.target.parentElement);
-// 	});
-// }
+		addTaskTocomplete(event.target.parentElement);
+	});
+}
 
-// function addTaskToComplite(taskElement)
-// {
-//   const taskTitle = taskElement.querySelector(".inner > h2").innerText;
-//   const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
+function addTaskToComplite(taskElement)
+{
+  const taskTitle = taskElement.querySelector(".inner > h2").innerText;
+  const taskTimestamp = taskElement.querySelector(".inner > p").innerText;
 
-//   const newTodo = makeTodo(taskTitle,taskTimestamp);
-//   const listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
-//   listCompleted.append(newTodo);
-//   taskElement.remove();
+  const newTodo = makeTodo(taskTitle,taskTimestamp);
+  const listCompleted = document.getElementById(COMPLETED_LIST_TODO_ID);
+  listCompleted.append(newTodo);
+  taskElement.remove();
 
-// }
+}
