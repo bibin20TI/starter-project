@@ -74,3 +74,9 @@ function createCheckButton()
 	});
 }
 
+function removeTaskFromCompleted(taskElement)
+{
+
+  taskElement.remove();
+}
+
